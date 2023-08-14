@@ -1,2 +1,7 @@
-# front-end-unit-testing
-Front end unit testing course. From theory to project practice, pass unit testing, and reshape your development approach to become a more professional programmer.
+# 单元测试
+
+前端单元测试课程。从理论到项目实践，通过单元测试，重塑你的开发方法，成为一名更专业的程序员。
+
+## 目录大纲
+
+### 01. 为什么要写测试
