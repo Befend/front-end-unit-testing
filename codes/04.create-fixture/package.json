@@ -1,0 +1,16 @@
+{
+  "name": "create-fixture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "pinia": "^2.1.7",
+    "vitest": "^0.29.8"
+  }
+}
