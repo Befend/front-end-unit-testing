@@ -1,0 +1,6 @@
+## API的多种测试方案
+### 1. 直接mock axios
+
+### 2. mock中间层
+
+### 3. 使用mock server worker
