@@ -64,6 +64,40 @@ test("update todo list", async () => {
 	expect(todoStore.todos[0].title).toBe("写代码")
 })
 
+// 反向测试
+test("should not add a todo when title is empty", async () => {
+	// 准备数据
+	setActivePinia(createPinia())
+	const todoStore = useTodoStore()
+	// 非正常测试sad path
+	const title = ""
+
+	// 调用
+	await todoStore.addTodo(title)
+
+	// 验证
+	expect(todoStore.todos.length).toBe(0)
+})
+
+// 异常测试
+test("should throw a error when removed id does not exist", async () => {
+	// 准备数据
+	vi.mocked(fetchRemoveTodo).mockImplementationOnce(() => {
+		return Promise.resolve({
+			data: null,
+			state: 0,
+		})
+	})
+
+	setActivePinia(createPinia())
+	const todoStore = useTodoStore()
+
+	// 调用  异常处理
+	expect(async () => {
+		await todoStore.removeTodo(2)
+	}).rejects.toThrowError("id:2 does not exist")
+})
+
 test("should not be added todo when network is error", async () => {
 	// 准备数据
 	vi.mocked(fetchAddTodo).mockImplementation((title: any) => {
@@ -77,35 +111,4 @@ test("should not be added todo when network is error", async () => {
 	expect(async () => {
 		await todoStore.addTodo(title)
 	}).rejects.toThrowError("network error")
-})
-
-test("should not add a todo when title is empty", async () => {
-	// 准备数据
-	setActivePinia(createPinia())
-	const todoStore = useTodoStore()
-	const title = ""
-
-	// 调用
-	await todoStore.addTodo(title)
-
-	// 验证
-	expect(todoStore.todos.length).toBe(0)
-})
-
-test("should throw a error when removed id does not exist", async () => {
-	// 准备数据
-	vi.mocked(fetchRemoveTodo).mockImplementationOnce(() => {
-		return Promise.resolve({
-			data: null,
-			state: 0,
-		})
-	})
-
-	setActivePinia(createPinia())
-	const todoStore = useTodoStore()
-
-	// 调用
-	expect(async () => {
-		await todoStore.removeTodo(2)
-	}).rejects.toThrowError("id:2 does not exist")
 })
