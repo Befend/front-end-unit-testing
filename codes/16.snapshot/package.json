@@ -1,0 +1,19 @@
+{
+	"name": "indirect-input",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "vitest run",
+		"test:w": "vitest run -w"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^18.15.11",
+		"@vitejs/plugin-vue": "^5.0.2",
+		"@vue/test-utils": "^2.4.1",
+		"vitest": "^0.29.8"
+	}
+}
